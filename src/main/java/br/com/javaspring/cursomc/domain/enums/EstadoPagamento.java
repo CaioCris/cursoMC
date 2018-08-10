@@ -1,14 +1,15 @@
 package br.com.javaspring.cursomc.domain.enums;
 
-public enum TipoCliente {
-	
-	PESSOAFISICA(1, "Pessoa Física"),
-	PESSOAJURIDICA(2, "Pessoa Juridica");
-	
+public enum EstadoPagamento {
+
+	PENDENTE(1, "pendente"),
+	QUITADO(2, "Quitado"), 
+	CANCELADO(3, "Cancelado");
+
 	private Integer codigo;
 	private String descricao;
-	
-	private TipoCliente(Integer codigo, String descricao) {
+
+	private EstadoPagamento(Integer codigo, String descricao) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 	}
@@ -20,19 +21,19 @@ public enum TipoCliente {
 	public String getDescricao() {
 		return descricao;
 	}
-	
-	public static TipoCliente toEnum(Integer codigo) {
+
+	public static EstadoPagamento toEnum(Integer codigo) {
+
 		if (codigo == null) {
 			return null;
 		}
-		
-		for(TipoCliente tc : TipoCliente.values()) {
-			if (codigo.equals(tc.getCodigo())) {
-				return tc;
+
+		for (EstadoPagamento ep : EstadoPagamento.values()) {
+			if (codigo.equals(ep.getCodigo())) {
+				return ep;
 			}
 		}
-		
+
 		throw new IllegalArgumentException("Id inválido: " + codigo);
 	}
-	
 }
