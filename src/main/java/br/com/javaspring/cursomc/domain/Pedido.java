@@ -53,14 +53,14 @@ public class Pedido implements Serializable{
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
 
-//	@JsonIgnore
-//	public List<Produto> getProdutos() {
-//		List<Produto> lista = new ArrayList<>();
-//		for (ItemPedido ip : itens) {
-//			lista.add(ip.getProduto());
-//		}
-//		return lista;
-//	}
+	public double getValorTotal() {
+		double soma = 0.0;
+		for (ItemPedido ip: itens) {
+			soma = soma + ip.getSubTotal();
+		}
+		return soma;
+	}
+	
 	
 	public Integer getId() {
 		return id;
